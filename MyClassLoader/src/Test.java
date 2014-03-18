@@ -6,6 +6,7 @@ public class Test {
     public static void main(String[] argv) throws Exception {
 
         for (;;) {
+            System.out.println("ii");
             String exit;
             String uname1 = "lor1an";
             String uname2 = "Anatolii_Hlazkov";
