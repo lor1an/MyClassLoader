@@ -6,17 +6,22 @@ public class Test {
     public static void main(String[] argv) throws Exception {
 
         for (;;) {
+            String exit;
+            String uname1 = "lor1an";
+            String uname2 = "Anatolii_Hlazkov";
+            String pathToClasses = "C:\\Users\\" + uname2
+                    + "\\Documents\\NetBeansProjects\\MyClassLoader\\MyClassLoader\\build\\classes";
+            ClassLoader loader
+                    = new DynamicClassOverloader(new String[]{".", "", pathToClasses});
 
-            ClassLoader loader = new DynamicClassOverloader(new String[]{".","","C:\\Users\\lor1an\\Documents\\NetBeansProjects\\MyClassLoader\\MyClassLoader\\build\\classes"});
-
-      // текущий каталог "." будет единственным каталогом поиска
-            Class clazz = Class.forName("TestModule", true, loader);
-
-            Object object = clazz.newInstance();
-
+            Class clas = Class.forName("TestModule", true, loader);
+            Object object = clas.newInstance();
             System.out.println(object);
+            exit = new BufferedReader(new InputStreamReader(System.in)).readLine();
 
-            new BufferedReader(new InputStreamReader(System.in)).readLine();
+            if (exit.equalsIgnoreCase("exit") || exit.equalsIgnoreCase("e")) {
+                break;
+            }
 
         }
 
