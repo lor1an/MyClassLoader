@@ -1,13 +1,12 @@
 package com.epam.myclassloader;
 
-
 import java.io.*;
 
 public class MyClassLoader extends ClassLoader {
 
-    public final String[] classPath;
+    public final String classPath;
 
-    public MyClassLoader(String[] classPath) {
+    public MyClassLoader(String classPath) {
         this.classPath = classPath;
     }
 
@@ -43,11 +42,10 @@ public class MyClassLoader extends ClassLoader {
     }
 
     private File findFile(String name, String extension) {
-        for (int k = 0; k < classPath.length; k++) {
-            File f = new File((new File(classPath[k])).getPath() + File.separatorChar + name.replace('/', File.separatorChar) + extension);
-            if (f.exists()) {
-                return f;
-            }
+        File f = new File((new File(classPath)).getPath() + File.separatorChar + name.replace('/', File.separatorChar) + extension);
+        if (f.exists()) {
+            return f;
+
         }
         return null;
     }

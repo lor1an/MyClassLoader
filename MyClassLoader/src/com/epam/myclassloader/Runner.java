@@ -11,9 +11,9 @@ public class Runner {
             String exit;
             String uname1 = "lor1an";
             String uname2 = "Anatolii_Hlazkov";
-            String pathToClasses = "C:\\Users\\" + uname1
+            String pathToClasses = "C:\\Users\\" + uname2
                     + "\\Documents\\NetBeansProjects\\MyClassLoader\\MyClassLoader\\build\\classes";
-            ClassLoader loader = new MyClassLoader(new String[]{pathToClasses});
+            ClassLoader loader = new MyClassLoader(pathToClasses);
             Class clas = Class.forName("com.epam.myclassloader.RecompilingClass", true, loader);
             Object object = clas.newInstance();
             System.out.println(object);
